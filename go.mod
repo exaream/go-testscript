@@ -1,6 +1,6 @@
 module sample
 
-go 1.18
+go 1.19
 
 require github.com/rogpeppe/go-internal v1.8.1
 
