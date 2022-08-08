@@ -1,3 +1,4 @@
+// Sample using package testscirpt
 package sample_test
 
 import (
@@ -25,7 +26,7 @@ func TestSample(t *testing.T) {
 }
 
 // mycat behaves like cat command.
-// Do NOT use *testing.T as an argument because this method is used testscript.RunMain(
+// Do NOT use *testing.T as an argument because mycat is used in testscript.RunMain().
 func mycat() int {
 	if len(os.Args) == 1 {
 		_, err := io.Copy(os.Stdout, os.Stdin)
