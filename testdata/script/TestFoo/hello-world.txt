@@ -1,6 +1,5 @@
 mycat hello.txt world.txt
-stdout 'hello\n'
-stdout 'world!\n'
+stdout 'hello\nworld!\n'
 
 -- hello.txt --
 hello

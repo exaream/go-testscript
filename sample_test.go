@@ -19,29 +19,31 @@ func TestMain(m *testing.M) {
 	}))
 }
 
-// TestFoo contains a test for custom command "mycat".
+// TestFoo tests custom command "mycat".
 func TestFoo(t *testing.T) {
-	t.Parallel()
-	testscript.Run(t, testscript.Params{
-		Dir:         filepath.Join(scriptDir, t.Name()),
-		WorkdirRoot: t.TempDir(),
-	})
-}
-
-// TestBar contains only tests for defined commands.
-// If this test contains custom commands, an error occurred in gotooltest.Setup().
-func TestBar(t *testing.T) {
 	t.Parallel()
 	params := testscript.Params{
 		Dir:         filepath.Join(scriptDir, t.Name()),
 		WorkdirRoot: t.TempDir(),
 	}
 
+	// The error "unexpected command failure" will occasionally occur
+	// if you don't write the following.
 	if err := gotooltest.Setup(&params); err != nil {
 		t.Fatal(err)
 	}
 
 	testscript.Run(t, params)
+}
+
+// TestBar tests only defined commands.
+// It does not contain any custom commands.
+func TestBar(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir:         filepath.Join(scriptDir, t.Name()),
+		WorkdirRoot: t.TempDir(),
+	})
 }
 
 // mycat behaves like cat command.
