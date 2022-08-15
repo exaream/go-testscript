@@ -1,2 +1,16 @@
 exec echo 'hello world!'
 stdout 'hello world!\n'
+
+exists hello.txt
+grep abc hello.txt
+
+cp hello.txt tmp.txt
+exists tmp.txt
+
+cp tmp.txt world.txt 
+rm tmp.txt
+! exists tmp.txt
+exists world.txt
+
+-- hello.txt --
+abc
