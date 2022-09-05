@@ -1,16 +1,18 @@
-exec echo 'hello world!'
-stdout 'hello world!\n'
+exec echo 'Begin'
+stdout 'Begin'
 
 exists hello.txt
 grep abc hello.txt
 
 cp hello.txt tmp.txt
-exists tmp.txt
+cmp hello.txt tmp.txt
 
-cp tmp.txt world.txt 
-rm tmp.txt
+mv tmp.txt world.txt 
 ! exists tmp.txt
 exists world.txt
+
+exec echo 'End'
+stdout 'End'
 
 -- hello.txt --
 abc
