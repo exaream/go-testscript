@@ -1,0 +1,7 @@
+mycat hello.txt world.txt
+stdout 'hello\nworld!\n'
+
+-- hello.txt --
+hello
+-- world.txt --
+world!
